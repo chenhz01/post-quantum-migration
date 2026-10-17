@@ -1,3 +1,9 @@
+## English Summary
+
+These notes trace the practical path of moving public-key cryptography off quantum-vulnerable algorithms, starting from the threat model rather than from any hardware timeline. They cover why Shor converts a complexity assumption into a scheduling problem, harvest-now-decrypt-later exposure sorted by data lifetime, the FIPS 203/204/205 family and why the lattice and hash paths hedge different failure modes, hybrid key exchange and the gap between finished RFCs and moving drafts, cryptographic bills of materials as the first real step, the difference between deployment and readiness in TLS negotiation, crypto-agility as a way to compress replacement cost, the regulatory clock that starts earlier than the technical one, a three-metric scorecard, and a minimum playbook sized for a one-person company. Each claim states its boundary numbers with source grades, separates finalized standards from drafts, and names the evidence that would reverse it. They are written for engineers and researchers evaluating this field, including operators who need to decide what to change first rather than whether to change at all.
+
+> 中文简介见下 ↓
+
 # 后量子密码迁移 · 十件研究笔记
 
 一套长期跟踪后量子密码迁移写下的独立研究笔记：从 Shor 算法的威胁模型出发，经标准家谱、混合密钥交换、密码清单、协商可观测性、敏捷性与监管时钟，落到一人公司能执行的动作清单与季度记分卡——每条结论都带边界数、来源等级与证伪条件。
@@ -57,3 +63,33 @@
 MIT License. Copyright (c) 2026 chenhz01.
 
 本套笔记按「现状」提供，不构成安全审计结论、合规意见或采购建议。读者应以一手标准原文与自身实测结果为准。
+
+## 同系列笔记（五个领域）
+
+| 领域 | 仓库 | 一句话 |
+|---|---|---|
+| 神经形态计算与事件驱动传感 | [neuromorphic-event-sensing](https://github.com/chenhz01/neuromorphic-event-sensing) | 永远在线的智能为什么必须抛弃「帧」与全局时钟，以及省 100 倍的前提条件 |
+| AI 老药新用与计算重定位 | [ai-drug-repurposing](https://github.com/chenhz01/ai-drug-repurposing) | 用计算手段给已上市分子找新适应症，以及 10-30% 的前瞻重复率边界 |
+| 本地优先软件与 CRDT 同步 | [local-first-crdt](https://github.com/chenhz01/local-first-crdt) | 把数据主副本放回用户设备，冲突由数学保证收敛 |
+| 后量子密码迁移 | [post-quantum-migration](https://github.com/chenhz01/post-quantum-migration) | 从 Shor 的威胁模型走到一人公司能执行的换算法顺序 |
+| 软体与折纸机器人 | [soft-origami-robotics](https://github.com/chenhz01/soft-origami-robotics) | 柔性结构能否把安全、顺应与几何编程做成工程能力 |
+
+五套笔记各自独立，互不依赖，可任选入口进入。
+
+## 费曼速览：60 秒判断这个领域值不值得你花时间
+
+**一句话**：像有人正在偷偷复印你家钥匙的形状、准备十年后再来开锁——现在还撬不开，但保险柜里的东西那时候还值钱；哪里不像：换锁可以一晚上换完，而全球银行替换全套密码 routinely 需要十年以上，所以动手时间要按「数据寿命 × 替换周期」倒排，不能按量子计算机哪年到倒排。
+
+**三个数**：
+
+1. FIPS 203 / 204 / 205 于 2024 年 8 月定稿 [一手]
+2. NIST IR 8547（草案）提议 2030 后弃用、2035 后禁用量子易损公钥算法 [一手]
+3. 全球银行替换全套密码 routinely 需要十年以上 [二手]
+
+**不成立的三个条件**：
+
+1. 若出现可信的物理证明——容错量子计算机不可实现或经济上永不可行——威胁模型作废，迁移从必然降级为纯保险行为。
+2. 若格密码被找到高效经典攻击或更优量子攻击，被证伪的是「选格」这个决定，不是「迁移」这个方向；攻击只会改变迁移目标。
+3. 若清点后密码面确实极小（全部流量走一个已默认启用混合密钥交换的现代托管服务、自持仅一张短寿证书），激进迁移的边际收益低于投入，正确动作是维持监测而非上项目——且这个判断以先完成清点为前提。
+
+这套笔记的每篇都有完整两层费曼拆解，方法见 [FEYNMAN.md](./FEYNMAN.md)。
