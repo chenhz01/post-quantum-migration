@@ -1,8 +1,30 @@
-## English Summary
+## 15 秒判断：这套笔记值不值得你收藏
+
+**收藏它，如果你是 ——**
+- 被董事会或监管要求交一份后量子迁移路线图、但手上还没有密码资产清单的安全负责人
+- 负责 TLS / CDN / 网关配置、需要回答「到底多少流量真的协商出了混合组」的平台或 SRE 工程师
+- 做支付或长期客户数据业务、要决定「哪几把长寿命钥匙先换」的中小团队技术决策者
+
+**直接划走，如果你要的是 ——**
+- 可直接部署的配置文件或迁移脚本（本仓是纯研究笔记：无代码、无产品、无工具）
+- 一个确定的 CRQC 到达年份（本套笔记明确不主张某年到达，急迫性来自替换周期与数据寿命）
+- 稳定更新的跟踪动态（十件笔记是一次成稿的系列，后续更新不定期）
+
+**三条最反直觉的发现 ——**
+1. 威胁不在量子计算机问世那天，而在今天已开始计时的存量债务——捕获不以量子能力就绪为前提，只有长寿命秘密在被抄名单上（2026 外泄的数据 2032 年仍敏感 [二手]）
+2. 配置里开了混合组不等于流量里用上了——TLS 协商时一端不支持即回退古典密钥交换，两侧面板可能都显示已启用（部署≠就绪 [二手]；关闭条件为混合组占比接近 100% 且连续数月稳定 [推算]）
+3. 这场迁移赢的不是「这次换对算法」，而是抽象层——换代成本从重构级压到配置级，算法被攻破时可小时级 pivot 而非数年重构（CARI = 有抽象密码层的应用 / 核心应用总数 > 85% [二手]）
+
+---
+
+<details>
+<summary><b>English Summary</b>（英文读者展开）</summary>
 
 These notes trace the practical path of moving public-key cryptography off quantum-vulnerable algorithms, starting from the threat model rather than from any hardware timeline. They cover why Shor converts a complexity assumption into a scheduling problem, harvest-now-decrypt-later exposure sorted by data lifetime, the FIPS 203/204/205 family and why the lattice and hash paths hedge different failure modes, hybrid key exchange and the gap between finished RFCs and moving drafts, cryptographic bills of materials as the first real step, the difference between deployment and readiness in TLS negotiation, crypto-agility as a way to compress replacement cost, the regulatory clock that starts earlier than the technical one, a three-metric scorecard, and a minimum playbook sized for a one-person company. Each claim states its boundary numbers with source grades, separates finalized standards from drafts, and names the evidence that would reverse it. They are written for engineers and researchers evaluating this field, including operators who need to decide what to change first rather than whether to change at all.
 
 > 中文简介见下 ↓
+
+</details>
 
 # 后量子密码迁移 · 十件研究笔记
 
@@ -93,3 +115,16 @@ MIT License. Copyright (c) 2026 chenhz01.
 3. 若清点后密码面确实极小（全部流量走一个已默认启用混合密钥交换的现代托管服务、自持仅一张短寿证书），激进迁移的边际收益低于投入，正确动作是维持监测而非上项目——且这个判断以先完成清点为前提。
 
 这套笔记的每篇都有完整两层费曼拆解，方法见 [FEYNMAN.md](./FEYNMAN.md)。
+
+## 可引用卡片：想转给同事，直接复制这几句
+
+> 捕获不需要量子计算机先到——今天被抓走的密文，就是 2032 年的明文。
+> —— 出自《HNDL「先收割后解密」：今天被抓包的数据 2032 年裸奔》，[查看原文](./notes/02-hndl-harvest-now.md)
+
+> 一端不支持就悄悄回退古典交换，两侧面板却都显示已启用——部署不等于就绪。
+> —— 出自《部署≠就绪：TLS 协商回退的 visibility gap》，[查看原文](./notes/06-deployment-vs-readiness.md)
+
+> 致胜的不是换对算法，是把换代成本从重构级压到配置级——小时级 pivot。
+> —— 出自《密码敏捷性 crypto-agility：抽象层设计》，[查看原文](./notes/07-crypto-agility.md)
+
+每句都自带出处链接，可单独复制转发。
